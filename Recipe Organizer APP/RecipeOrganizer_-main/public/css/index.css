@@ -1,0 +1,101 @@
+header {
+  background-color: rgba(243, 218, 186, 0.89); 
+  padding: 10px; 
+}
+
+.navbar {
+  display: flex; 
+  list-style: none; 
+  align-items: center;
+  padding: 10px;
+}
+.navbar a {
+  text-decoration: none; 
+  color: black; 
+  font-weight: bold; 
+  font-size: 16px;
+}
+
+#icon {
+  width: 5rem; 
+  height: 5rem; 
+  margin-right: auto; 
+}
+
+
+.navbar li {
+  margin-left: 50px; 
+  margin-right: 50px;
+  
+}
+
+.navbar li:first-child {
+
+  margin-left: 70%;
+}
+.navbar a:hover{
+  color: white;
+}
+
+footer {
+  bottom: 0;
+  background-color: rgba(243, 218, 186, 0.89); /* Background color */
+  color: black; /* Text color */
+  text-align: center; /* Center-align text */
+  width: 100%;
+  padding: 50px;
+}
+  
+/* ---------- body css ------------ */
+body {
+  min-height: 100vh;
+  background: url('/images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  
+}
+.header-cont {
+    width: 50%;
+    padding: 30px;
+    margin: 0 auto;
+    margin-top: 5rem;
+    text-align: center;
+}
+
+#myimage {
+    width: 100%;
+    height: auto;
+}
+
+
+.container {
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .paragraph {
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: justify;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin: 0 40%;
+    margin-bottom: 5rem;
+  }
+  
+  .button:hover {
+    background-color: #45a049;
+  }

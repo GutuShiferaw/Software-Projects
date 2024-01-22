@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recipes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/recipes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+<% if (typeof recipes !== 'undefined') { %>
+    <div class="container">
+        <h1>Here are Your Delicious Recipes 🤤:</h1>
+        <div class="list-cont">
+          <ul id="recipeList">
+            <!-- Recipes will be dynamically added here -->
+            <% recipes.forEach(recipe => { %>
+              <li class="recipe-section">
+                <div class="recipe-info">
+                  <div class="recipe-property">
+                    <strong>Name:</strong> <%= recipe.name %>
+                  </div>
+                  <div class="recipe-property">
+                    <strong>Ingredients:</strong> <%= recipe.ingredients %>
+                  </div>
+                  <div class="recipe-property">
+                    <strong>Instructions:</strong> <%= recipe.instructions %>
+                  </div>
+                  <div class="recipe-property">
+                    <strong>Category:</strong> <%= recipe.category %>
+                  </div>
+                </div>
+                <button class="delete-button" onclick="deleteRecipe('<%= recipe._id %>'); window.location.href = '/showrecipes';">Delete</button>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+      </div>
+      
+<% } %>   
+    <%- include('../partials/footer') %>
+<script>
+    function deleteRecipe(recipeId) {
+        fetch('/deleterecipe', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ recipeId }),
+        })
+        .then(response => {
+            if (!response.ok) {
+            throw new Error(`Server returned ${response.status} ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Check the success flag in the response
+            if (data.success) {
+            console.log("Recipe deleted successfully");
+
+            // Refresh the current page using JavaScript
+            window.location.reload();
+            } else {
+            console.log(data.message); // Log the error message
+            // Handle the error scenario as needed
+            }
+        })
+        .catch(error => {
+            console.error('Error during fetch operation:', error);
+        });
+        }
+  </script>
+  
+  
+</body>
+</html>

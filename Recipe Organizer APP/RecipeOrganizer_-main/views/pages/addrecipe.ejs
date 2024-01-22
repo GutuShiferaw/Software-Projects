@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/addrecipes.css">
+  <title>Add Recipe</title>
+</head>
+<body>
+<%- include('../partials/header') %>
+<div class="container">
+  <h1>Add Your Recipes Here 😊:</h1>
+  <form action="/addrecipe" method="post">
+    <!-- Recipe Name -->
+    <label for="recipeName">Recipe Name:</label>
+    <input type="text" id="recipeName" name="name" required>
+
+    <!-- Ingredients -->
+    <label for="ingredients">Ingredients:</label>
+    <textarea id="ingredients" name="ingredients" rows="4" required></textarea>
+    
+    <!-- Instructions -->
+    <label for="instructions">Instructions:</label>
+    <textarea id="instructions" name="instructions" rows="6" required></textarea>
+
+    <!-- Category -->
+    <label for="category">Category:</label>
+    <select id="category" name="category" required>
+      <option value="Breakfast">Breakfast</option>
+      <option value="Lunch">Lunch</option>
+      <option value="Dinner">Dinner</option>
+      <option value="Snack">Snack</option>
+      <option value="Dessert">Dessert</option>
+      <option value="Other">Other</option>
+    </select><br>
+    <!-- Add more fields as needed -->
+    <button type="submit">Add Recipe</button>
+  </form>
+  </div>
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+{% extends 'base/base.html' %}
+
+
+{% block header %}IQALUIT MICRO GRID{% endblock %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOME</title>
+  <style >
+    h2 {
+  text-align: center;
+  padding-top: 20px;
+  color: black;
+}
+
+p {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.container {
+  margin-top: 50px;
+  width: 80%;
+  max-width: 800px;
+  height: 500px;
+  background-color: #808080;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+
+.button-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.button-list li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 50px;
+  margin: 0 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+.button-text1 {
+  display: block;
+  margin-top: 7px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.button-text2 {
+  display: block;
+  margin-top: 7px;
+  font-size: 14px;
+  text-align: center;
+}
+
+#btn1 {
+  background-image: url('/static/img/icon1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#btn2 {
+  background-image: url('/static/img/icon2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+  </style>
+  
+</head>
+<body>
+  <div class="container mt-5"style="margin-top: 30px; margin-left: 350px;">
+    <h2> POWER GUI HOME </h1>
+    <P> "Please choose from the options below"</P>
+  <ul class="button-list">
+  <li>
+    <div class="button-container">
+     <form method="get" action="{% url 'GridOverview' %}">
+      <button class="button button-with-image1" id="btn1"></button>
+      <span class="button-text1">Overview</span>
+    </form>
+    </div>
+  </li>
+  <li>
+    <div class="button-container">
+      <form method="get" action="{% url 'optimize' %}">
+      <button class="button button-with-image2" id="btn2"></button>
+      <span class="button-text2">Optimization</span>
+    </form>
+    </div>
+  </li>
+</ul>
+
+ </div>
+</body>
+</html>
+{% endblock %}

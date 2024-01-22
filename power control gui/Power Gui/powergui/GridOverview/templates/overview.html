@@ -1,0 +1,212 @@
+{% extends 'base/base.html' %}
+
+{% block header %}IQALUIT MICRO GRID{% endblock %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Overview</title>
+	<style>
+
+
+		.date-display {
+			margin-top: 20px;
+			text-align: right;
+			font-family: "Open Sans", sans-serif;
+			font-size: 20px;
+			font-weight: bold;
+			color: #333;
+			text-transform: uppercase;
+			margin-left: 10px;
+		}
+		.wind-display {
+			text-align: right;
+			font-family: "Open Sans", sans-serif;
+			font-size: 20px;
+			font-weight: bold;
+			color: #333;
+			text-transform: uppercase;
+			margin-left: 10px;
+		}
+		img {
+		  display: block;
+		  margin: 0 auto;
+		  max-width: 100%;
+		  padding: 1em;
+		}
+		#power-load-chart {
+
+        max-width: 700px;
+        height: 350px;
+        margin: 0 auto;
+
+    	}
+    	#gen-chart {
+
+        max-width: 700px;
+        height: 350px;
+        margin: 0 auto;
+
+    	}
+    	#batt-chart {
+
+        max-width: 700px;
+        height: 350px;
+        margin: 0 auto;
+
+    	}
+	h2,h3,h4{
+		text-align: center;
+	}
+    h2{
+        margin-top: 20px;
+        color: black;
+        font-family: sans-serif;
+        font-size: 20px;
+    }
+	h3{
+		margin-top: 10px;
+        color: black;
+        font-family: sans-serif;
+        font-size: 20px;
+	}
+	h4{
+		margin-top: 10px;
+        color: black;
+        font-family: sans-serif;
+        font-size: 20px;
+	}
+	</style>
+</head>
+<body>
+	<div class="date-display">simulation date: {{ date }}</div>
+	<div class="wind-display">Average Wind speed: {{ speed|floatformat:2 }} Km/h</div>
+	<h2>Total Power/ Total Load Vs. Time </h1>
+	<canvas id="power-load-chart" ></canvas>
+	<h3> Renewable resource/Diesel power generations Vs. Time</h2>
+	<canvas id="gen-chart" ></canvas>
+	<h4> Battery SOC/ Battery power Vs. Time</h2>
+	<canvas id="batt-chart" ></canvas>
+   	{% block script %}
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var ctx = document.getElementById('power-load-chart').getContext('2d');
+        var ctx2 = document.getElementById('gen-chart').getContext('2d');
+        var ctx3 = document.getElementById('batt-chart').getContext('2d');
+        // retrieve the data from the Django view using AJAX
+        fetch('http://127.0.0.1:8000/login/home/GridOverview/powervsload/')
+            .then(response => response.json())
+            .then(data => {
+                // extract the power, load, and time arrays from the JSON data
+                var powerData = data.power;
+                var loadData = data.load;
+                var timeData = data.time;
+
+                // create a new Chart object
+                var chart = new Chart(ctx, {
+				    type: 'line',
+				    data: {
+				        labels: timeData,
+				        datasets: [{
+				            label: 'Power (MWH)',
+				            data: powerData,
+				            borderColor: 'rgba(178, 34, 34, 1)',
+				            backgroundColor: 'rgba(178, 34, 34, 0.2)',
+				            borderWidth: 1
+				        }, {
+				            label: 'Load (MWH)',
+				            data: loadData,
+				            borderColor: 'rgba(54, 162, 235, 1)',
+				            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+				            borderWidth: 1
+				        }]
+				    },
+
+				});
+            })
+            //fetching the second data for nonrenewable power generation
+            fetch('http://127.0.0.1:8000/login/home/GridOverview/generation/')
+            .then(response => response.json())
+            .then(data => {
+                // extract the power, load, and time arrays from the JSON data
+                var diesel = data.diesel;
+                var wind = data.wind;
+                var solar = data.solar;
+                var timeData = data.time;
+
+                // create a new Chart object
+                var chart = new Chart(ctx2, {
+                    type: 'line',
+                    data: {
+                        labels: timeData,
+                        datasets: [{
+                            label: 'Diesel (MWH)',
+                            data: diesel,
+                            borderColor: 'rgba(178, 34, 34, 1)',
+                            backgroundColor: 'rgba(178, 34, 34, 0.2)',
+                            borderWidth: 1
+                        }, {
+                            label: 'Wind (MWH)',
+                            data: wind,
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Solar (MWH)',
+                            data: solar,
+                            borderColor: 'rgba(34, 139, 34, 1)',
+                            backgroundColor: 'rgba(34, 139, 34, 0.2)',
+                            borderWidth: 1
+                        }]
+                        
+                    },
+
+                });
+            })
+            //fetching the third data for battery power generation
+            fetch('http://127.0.0.1:8000/login/home/GridOverview/generation2/')
+            .then(response => response.json())
+            .then(data => {
+                // extract the power, load, and time arrays from the JSON data
+                var Soc = data.level;
+                var Power = data.power;
+                var timeData = data.time;
+
+                // create a new Chart object
+                var chart = new Chart(ctx3, {
+                    type: 'line',
+                    data: {
+                        labels: timeData,
+                        datasets: [{
+                            label: 'SOC (%)',
+                            data: Soc,
+                            borderColor: 'rgba(178, 34, 34, 1)',
+                            backgroundColor: 'rgba(178, 34, 34, 0.2)',
+                            borderWidth: 1
+                        }, {
+                            label: 'Battery Power (MWH)',
+                            data: Power,
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderWidth: 1
+                        }]
+                        
+                    },
+
+                });
+            })
+            .catch(error => console.log(error));
+    });
+</script>
+
+{% endblock %}
+
+
+</body>
+</html>
+{% endblock %}

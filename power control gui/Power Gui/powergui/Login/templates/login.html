@@ -1,0 +1,122 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block header %}IQALUIT MICRO GRID{% endblock %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style >
+   .container {
+          margin-top: 50px;
+          width: 30%;
+          max-width: 800px;
+          height: 500px;
+          background-color: #808080;
+          margin-left: auto;
+          margin-right: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  }
+.form-group {
+          margin-bottom: 2rem;
+
+}
+h2{
+        text-align: center;
+          color: black;
+}
+label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+input.form-control,
+textarea.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin: 0 auto;
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+
+ 
+}
+#btn1{
+  display: block;
+  margin: 0 auto;
+  width: 40%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  font-size: 14px;
+  text-align: center;
+}
+
+#btn1:hover {
+        background-color: #D3D3D3;
+      }
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2> GUI LOGIN PORTAL</h2>
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="id_username">UserID:</label>
+        <input type="text" name="username" id="id_username" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="id_password">Password:</label>
+        <input type="password" name="password" id="id_password" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary"id="btn1">Login</button>
+    </form>
+     {% if error %}
+    <div class="alert alert-danger" role="alert">{{ error }}</div>
+  {% endif %}
+  </div>
+
+</body>
+</html>
+{% endblock %}

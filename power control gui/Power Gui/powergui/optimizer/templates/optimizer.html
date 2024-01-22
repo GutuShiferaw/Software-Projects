@@ -1,0 +1,122 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Optimizer{% endblock %}
+
+{% block header %}IQALUIT MICRO GRID{% endblock %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Microgrid Optimization</title>
+    <style >
+    	body {
+        font-family: Arial, sans-serif;
+      }
+      h2 {
+        text-align: center;
+        color: black;
+      }
+      form {
+        margin: 0 auto;
+        width: 60%;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: #808080;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      input[type="text"], textarea {
+		  width: 30%;
+		  padding: 5px;
+		  border: 1px solid #ccc;
+		  border-radius: 5px;
+		  margin-bottom: 20px;
+		  font-size: 16px;
+		  margin: 0 auto;
+		  display: block;
+		  margin-top: 10px;
+      text-align: center;
+		}
+      input[type="submit"] {
+		  display: block;
+		  margin: 0 auto;
+		  width: 10%;
+		  padding: 5px;
+		  border-radius: 5px;
+		  background-color: white;
+		  color: black;
+		  font-size: 14px;
+		  text-align: center;
+		}
+
+      
+      input[type="submit"]:hover {
+        background-color: #D3D3D3;
+      }
+      #download-link {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+      }
+      textarea {
+	  width: 60%;
+	  height: 150px;
+	  padding: 5px;
+	  border: 1px solid #ccc;
+	  border-radius: 5px;
+	  margin-bottom: 20px;
+	  font-size: 16px;
+	}
+    </style>
+    </style>
+  </head>
+  <body>
+    <h2>Microgrid Optimization</h2>
+    <form action="{% url 'optimize' %}" method="POST">
+      {% csrf_token %}
+      <label for="power-demand">Enter Average Hourly Power Demand (MWH):</label>
+      <input type="text" id="power-demand" name="daily_power_demand"><br>
+      <input type="submit" value="Submit">
+      <label for="total-optimal-power-generation" style="margin-top: 10px;">Target Power Generation (MWH):</label>
+      <input type="text" id="total-optimal-power-generation" name="total_optimal_power_generation" readonly value="{{ total_gen }}"><br>
+
+      <label for="total-optimal-diesel-generation">Optimal Diesel Generation (MWH):</label>
+      <input type="text" id="total-optimal-diesel-generation" name="total_optimal_diesel_generation" readonly value="{{ optimal_diesel }}"><br>
+
+      <label for="total-optimal-wind-generation">Optimal Wind Generation (MWH):</label>
+      <input type="text" id="total-optimal-wind-generation" name="total_optimal_wind_generation" readonly value="{{ optimal_wind }}"><br>
+
+      <label for="total-optimal-solar-generation">Optimal Solar Generation (MWH):</label>
+      <input type="text" id="total-optimal-solar-generation" name="total_optimal_solar_generation" readonly value="{{ optimal_pv }}"><br>
+
+      <label for="total-optimal-Bat-generation">Optimal battery Generation (MWH):</label>
+      <input type="text" id="total-optimal-Bat-generation" name="total-optimal-Bat-generation" readonly value="{{ optimal_battery }}"><br>
+
+      <label for="total-optimal-cost">Optimal Cost (CAD$/MWH):</label>
+      <input type="text" id="total-optimal-cost" name="total_optimal_cost" readonly value="{{ optimal_cost }}"><br>
+
+      
+
+      <label for="detailed-summary">Detailed Summary:</label>
+      <textarea rows="10" cols="50" id="cost-breakdown" name="detailed_summary">{{ detailed_summary }}</textarea>
+		<a href="#" id="download-link" download="Detailed_Summary.txt">Download Detailed Summary here !</a>
+	<script>
+	    const textarea = document.getElementById('cost-breakdown');
+	    const downloadLink = document.getElementById('download-link');
+
+	    // Get the value of the detailed summary from the textarea
+	    const detailedSummary = textarea.value;
+
+	    // Set the value of the textarea and the href of the download link
+	    textarea.value = detailedSummary;
+	    downloadLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(detailedSummary);
+</script>
+  </body>
+</html>
+{% endblock %}

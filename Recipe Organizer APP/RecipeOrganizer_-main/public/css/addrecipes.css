@@ -1,0 +1,112 @@
+header {
+  background-color: rgba(243, 218, 186, 0.89); 
+  padding: 10px; 
+}
+
+.navbar {
+  display: flex; 
+  list-style: none; 
+  align-items: center;
+  padding: 10px;
+}
+.navbar a {
+  text-decoration: none; 
+  color: black; 
+  font-weight: bold; 
+  font-size: 16px;
+}
+
+#icon {
+  width: 5rem; 
+  height: 5rem; 
+  margin-right: auto; 
+}
+
+
+.navbar li {
+  margin-left: 50px; 
+  margin-right: 50px;
+  
+}
+
+.navbar li:first-child {
+
+  margin-left: 70%;
+}
+.navbar a:hover{
+  color: white;
+}
+
+footer {
+  bottom: 0;
+  background-color: rgba(243, 218, 186, 0.89); /* Background color */
+  color: black; /* Text color */
+  text-align: center; /* Center-align text */
+  width: 100%;
+  padding: 50px;
+}
+
+  /*----------body css-------------------*/
+  body {
+    min-height: 100vh;
+    background: url('/images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    
+  }
+
+.container {
+    max-width: 70%;
+    margin: 3rem auto;
+    padding: 20px;
+  }
+  h1{
+    text-align: center;
+    
+  }
+  form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5rem;
+    opacity: 90%;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  select {
+    width: 15rem;
+  }
+  button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 40%;
+    margin-top: 3rem;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }

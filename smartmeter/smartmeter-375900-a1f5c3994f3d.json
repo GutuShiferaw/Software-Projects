@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "smartmeter-375900",
+  "private_key_id": "a1f5c3994f3d32c091278e593166fd9fcdeb50f2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDOcNko8G2IACbF\nYwG1VOArmwlPbzSTUVbfsMNIF729LxTYyizb1JxHUKUk7ScIGhDL5qGxsgkG1GRi\nzUutNB5A5xFQPEMwS2fA7asNb1CKeRkt5niOqkb6bcUMu9Ekoo/ha7gvtmRFbVGI\ng206c881hhRtO1JaHTMkK261HrgvgFv5At3IO9Ew+GUBjHTcNM+3CmpTHqp0dc99\nigFhvIhOZfzphvIpk0p0CfSsROvLfb5EzRk/q1GxMw1o070HdpinBjJT1NepxZFP\nsjVKUlmDmu/yQIfz/a0EEvF7tf+KTYed1OZf3F+gc3apTH3jLx6Vt/8y6xN5veuE\nDpGIFiBfAgMBAAECggEACR1mUTIJSjxyljuCPts1c7zDRqPARyEZ/DyJdzVa63af\n32ZQ7p5LKiZBHi02LOoDCxBZhsApcfqyK1EM10eE/OK6d1tkd2KxYKm2oRxIQ5XP\nGUv/Xa6JGhOl5CNtrWJ4TbmcH8efUvtr1HDQpxbEQfasusRhJRH8M689ryj9dMdh\nZOmlw5yppkG96sX5hETWcpCkKbtsQy5dRTyBMSilb4qrxXioIkQpBUWpFMBHt/FK\nkWAkHMX7mB0JFcL5Z/5ZcGtqNi01464Eb0zi2n9hq8hzh9b8O+feWkHK8++n92OB\nfhZHhFSzE4DviW5uAUQ/uj+KrktwWM2xiRnrJGikuQKBgQD/tB2g27fsCe48Vnom\nKFJvW3Lk+1+XWqZm6TGg1brpZWshzNU+bZpyYkwd5s4W6eQAvedtH5vq+QuCfNvE\nbgwhoq0+dfVjn2txYWSlxfXNzNGtshT27lwe+Me+hFM1Yv7UmeoGgKrMkfTqcfZ7\nX3b8Nky1+V/OTN4gmpUq5UB7CQKBgQDOrhzt75QvXe+CRKRK/q32gFQxsKqptUvS\nhi4oiQ1M5BC0fysg9U864eRwn/rHUNE4bXVEMwYYEzf+05q8z4XLKIuAha8pfSu4\ntN8uAgm7ZmKJQI/dvF0AZrDbpmflKuXaLhMGr58YQESWAQIPxc8eFkn2odNizSey\n/nDhmybSJwKBgQDhUEDbQUBriMSX/ktb3CPnY9l109qDb6k4/Tpx0mMEzgz8l5U/\nkSyKpfsUThBDOI1j6fJGwZeOES0HKiYsjBu8d6/YXfCAfDUcjwk02Z6iXVxVhZnb\njGU4FVdMlSUM4dJSW91PJYlbATGidBEQ3SnnS6GEp9y32BvS9uOCDMgooQKBgCEN\npWDEDO3aVwB9W80Gl+mxMkXUHCcR8HNVtDIVYQQoASfsoogd0zL2h2MfoqqXmS4u\nCzAB/PqCsFTXoIqLobkQ3eaK+q1m8EQU4RBpkQbgY+fRZHCwvCrhQW2PWlRDHQlc\njvxlv8rQFGfs91hwaSRFqkSAMt89MhklKgZamsXHAoGBAIsuiQdXyEgWC3hAh4FE\nsqwM++gkC7xQIM0x4hfOHj3qWMqpKreULc/LSCcV8UQnRbpsZtwPvQbK9BCDjY78\nTDUFl62GT5GUgHwRiB7QhhDP7GXgB4zHr7zZQNpQM3MeqDUmBgKoPdvNQnJYKu09\n8XNYQ9Svgh6w/4VBz+q8KSMk\n-----END PRIVATE KEY-----\n",
+  "client_email": "pubsub@smartmeter-375900.iam.gserviceaccount.com",
+  "client_id": "114489782167054165571",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/pubsub%40smartmeter-375900.iam.gserviceaccount.com"
+}
