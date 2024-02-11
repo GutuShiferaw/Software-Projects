@@ -1,0 +1,139 @@
+@import "./shared.css";
+@import "@fontsource-variable/inter";
+@import "@fontsource/cardo/latin-400.css";
+@import "@fontsource/cardo/latin-400-italic.css";
+@config "../tailwind.demo3.config.js";
+
+@property --scroll-position {
+	syntax: "<number>";
+	inherits: true;
+	initial-value: 0;
+}
+@property --scroll-position-delayed {
+	syntax: "<number>";
+	inherits: true;
+	initial-value: 0;
+}
+
+@layer utilities {
+    .animate-text-up {
+        animation: text-up linear both;
+    }
+
+    .animate-fade {
+        animation: fade linear both;
+    }
+
+    .animate-captions {
+        animation: captions linear both;
+    }
+
+    .animate-indicator {
+        animation: indicator linear both;
+    }
+
+    .animate-progress {
+        animation: progress linear both;
+    }
+
+    .animate-scroll-pos {
+        animation: adjust-pos linear both;
+    }
+
+    @keyframes captions {
+        100% {
+            transform: translateY(calc((var(--slides) - 1)/var(--slides) * -100%));
+        }
+    }
+
+    @keyframes fade-out {
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0
+        }
+    }
+
+    @keyframes first {
+        50% {
+            transform: rotate(-5deg);
+        }
+        100% {
+            transform: rotate(-22deg) translateX(-120%);
+        }
+    }
+
+    @keyframes second {
+        50% {
+            transform: rotate(5deg)
+        }
+    }
+
+    @keyframes third {
+        50% {
+            transform: rotate(-9deg)
+        }
+    }
+
+    @keyframes fourth {
+        50% {
+            transform: rotate(9.5deg)
+        }
+    }
+
+    @keyframes fifth {
+        50% {
+            transform: rotate(9.5deg)
+        }
+    }
+
+    @keyframes sixth {
+        50% {
+            transform: rotate(9.5deg)
+        }
+    }
+    
+    @keyframes text-up {
+        0% {
+            opacity: 0.5;
+            transform: translateY(105%);
+        }
+        50% {
+            opacity: 1;
+            transform: none;
+        }
+        100% {
+            opacity: 0.5;
+            transform: translateY(-105%);
+        }
+    }
+
+    @keyframes fade {
+        0% {
+            opacity: 0
+        }
+        50% {
+            opacity: 1
+        }
+    }
+
+    @keyframes indicator {
+        100% {
+            transform: translateY(calc((var(--slides) - 1) * -100%));
+        }
+    }
+
+    @keyframes progress {
+        from {
+            transform: scaleY(calc(1/var(--slides)));
+        }
+    }
+
+    @keyframes adjust-pos {
+        to {
+            --scroll-position: 1;
+            --scroll-position-delayed: 1;
+        }
+    }
+}
